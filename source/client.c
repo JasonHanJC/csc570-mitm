@@ -6,10 +6,11 @@
 #include <arpa/inet.h>
 #include <string.h> 
 #define PORT 8080
+#define SERVER_IP "127.0.0.1"
 
 int main(int argc, char *argv[]) {
 	
-	char client_message[4] = "echo";
+	char client_message[5] = "echo";
 	char rec_buffer[1024] = {0}; 
 	
 	int client_socket;
@@ -22,11 +23,10 @@ int main(int argc, char *argv[]) {
 	
 	// define the server address
 	struct sockaddr_in server_address;
-	int addresslen = sizeof(server_address);
 	server_address.sin_family = AF_INET;
 	server_address.sin_port = htons(PORT);
 	// server is running on localhost 127.0.0.1
-	server_address.sin_addr.s_addr = inet_addr("127.0.0.1");
+	server_address.sin_addr.s_addr = inet_addr(SERVER_IP);
 	
 	// connect to server socket
 	if (connect(client_socket, (struct sockaddr *)&server_address, sizeof(server_address)) < 0) {

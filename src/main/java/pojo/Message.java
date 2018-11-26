@@ -33,6 +33,14 @@ public class Message implements Serializable {
 
         private InetSocketAddress clientAddress;
         private InetSocketAddress serverAddress;
+
+        @Override
+        public String toString() {
+            return "Header{" +
+                    "clientAddress=" + clientAddress +
+                    ", serverAddress=" + serverAddress +
+                    '}';
+        }
     }
 
     public Header getHeader() {
@@ -53,4 +61,12 @@ public class Message implements Serializable {
 
     private Header header;
     private String body;
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "header=" + header +
+                ", body='" + body + '\'' +
+                '}';
+    }
 }

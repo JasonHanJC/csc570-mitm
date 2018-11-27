@@ -3,8 +3,9 @@
 #include <sys/socket.h> 
 #include <stdlib.h> 
 #include <netinet/in.h> 
+#include <arpa/inet.h>
 #include <string.h> 
-#define PORT 8080
+#define PORT 9005
 
 int main(int argc, char *argv[]) {
 	
@@ -35,6 +36,8 @@ int main(int argc, char *argv[]) {
 		perror("Failed to listen the socket"); 
 		exit(EXIT_FAILURE); 
 	} 
+	
+	printf("Server is running on 127.0.0.1:9005 \n");
 
 	for (;;) {
 		// establish a new socket for data-transfer
@@ -57,13 +60,13 @@ int main(int argc, char *argv[]) {
 		while (rec_size > 0) {
 			
 			printf("Client message: %s\n", rec_buffer);
-			
-			int send_size = rec_size + 3;
+			int send_size = rec_size;
 			char send_mesg[send_size];
+			send_size = rec_size + 3;
 			// add $$$ in front client message
 			strcpy(send_mesg, "$$$");
 			strncat (send_mesg, rec_buffer, rec_size);
-			
+						
 			if (send(client_socket, send_mesg, send_size, 0) != send_size) {
 				perror("Failed to send client message"); 
 				exit(EXIT_FAILURE);

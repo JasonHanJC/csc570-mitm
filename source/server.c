@@ -5,6 +5,7 @@
 #include <netinet/in.h> 
 #include <arpa/inet.h>
 #include <string.h> 
+#include "common.h"
 #define PORT 9005
 
 int main(int argc, char *argv[]) {
@@ -59,7 +60,11 @@ int main(int argc, char *argv[]) {
 		
 		while (rec_size > 0) {
 			
-			printf("Client message: %s\n", rec_buffer);
+			// deserialize the destination address
+			struct Message rec_meg;
+			deserializeMessage(rec_buffer, &rec_meg);
+			printMessage(&rec_meg);
+			
 			int send_size = rec_size;
 			char send_mesg[send_size];
 			send_size = rec_size + 3;

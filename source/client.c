@@ -65,7 +65,10 @@ int main(int argc, char *argv[]) {
 		hijack_address.sin_addr.s_addr = inet_addr(HIJACK_IP);
 		int status;
 		if ((status = connect(client_socket, (struct sockaddr *)&hijack_address, sizeof(server_address))) < 0) {
-			// if hijack connect failed, connect to normal server
+			if ((client_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+				perror("Failed to create socket file descriptor");
+				exit(EXIT_FAILURE);
+			}
 			if (connect(client_socket, (struct sockaddr *)&server_address, sizeof(server_address)) < 0) {
 				perror("Failed to connect server socket");
 				exit(EXIT_FAILURE);

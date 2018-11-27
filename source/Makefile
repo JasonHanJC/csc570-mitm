@@ -6,8 +6,8 @@ all: server client proxy
 common.o:  common.c common.h 
 	$(CC) $(CFLAGS) -c common.c
 	
-server:
-	$(CC) $(CFLAGS) server.c -o server
+server: common.o
+	$(CC) $(CFLAGS) server.c common.o -o server
 	
 client: common.o
 	$(CC) $(CFLAGS) client.c common.o -o client

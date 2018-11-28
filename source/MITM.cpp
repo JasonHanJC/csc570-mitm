@@ -125,10 +125,10 @@ int main(int argc, char *argv[]) {
                 std::cout<<"intercept client mesasge: "<<rec_buffer<<std::endl;
                 std::cout<<"Please select your operation: 1. Forward 2. Not forward 3. Modify"<<std::endl;
                 bool repeat = true;
-                int op;
+                char op;
                 while(repeat){
                     std::cin>>op;
-                    if(op ==1 || op == 2|op==3)
+                    if(op == '1' || op == '2'| op=='3')
                     {
                         repeat = false;
                     }
@@ -137,7 +137,7 @@ int main(int argc, char *argv[]) {
                         std::cout<<"option invalid; please re-input!"<<std::endl;
                     }
                 }
-                if(op == 2){
+                if(op == '2'){
                     rec_size = 0;
                     close(client_socket);
                     close(mitm_socket_to_server);
@@ -145,7 +145,7 @@ int main(int argc, char *argv[]) {
                     singleRound = false;
                     continue;
                 }
-                if(op == 3){
+                if(op == '3'){
                     std::cout<<"please input the message you want to change to"<<std::endl;
                     std::string s;
                     std::cin>>s;
@@ -187,10 +187,10 @@ int main(int argc, char *argv[]) {
                 std::cout<<"intercept server mesasge: "<<rec_buffer_server<<std::endl;
                 std::cout<<"Please select your operation: 1. Forward 2. Not forward 3. Modify"<<std::endl;
                 bool repeat = true;
-                int op;
+                char op;
                 while(repeat){
                     std::cin>>op;
-                    if(op ==1 || op == 2|op==3)
+                    if(op == '1' || op == '2' | op== '3')
                     {
                         repeat = false;
                     }
@@ -199,7 +199,7 @@ int main(int argc, char *argv[]) {
                         std::cout<<"option invalid; please re-input!"<<std::endl;
                     }
                 }
-                if(op == 2){
+                if(op == '2'){
                     rec_size = 0;
                     close(client_socket);
                     close(mitm_socket_to_server);
@@ -207,7 +207,7 @@ int main(int argc, char *argv[]) {
                     singleRound = false;
                     continue;
                 }
-                if(op == 3){
+                if(op == '3'){
                     std::cout<<"please input the message you want to change to"<<std::endl;
                     std::string s;
                     std::cin>>s;

@@ -27,10 +27,10 @@ int main(int argc, char *argv[]) {
 		exit(EXIT_FAILURE);
 	}
 	
-	struct sockaddr_in my_address;
-	my_address.sin_family = AF_INET;
-	my_address.sin_port = htons(MY_PORT);
-	my_address.sin_addr.s_addr = INADDR_ANY;
+	// struct sockaddr_in my_address;
+	// my_address.sin_family = AF_INET;
+	// my_address.sin_port = htons(MY_PORT);
+	// my_address.sin_addr.s_addr = INADDR_ANY;
 	
 	// bind client socket to address
 //	if (bind(client_socket, (struct sockaddr *)&my_address, sizeof(my_address)) < 0) {
@@ -46,11 +46,11 @@ int main(int argc, char *argv[]) {
 	
 	// init message
 	struct Header header = {
-		.dest_addr = *(struct sockaddr *)&server_address
+		*(struct sockaddr *)&server_address
 	};
 	struct Message meg = {
-		.header = header,
-		.body = "echo"
+		header,
+		"echo"
 	};
 	
 	// generate client message

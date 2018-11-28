@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
 	server_address.sin_port = htons(PORT);
 	server_address.sin_addr.s_addr = INADDR_ANY;
 	
-	// binf the socket to address
+	// bind the socket to address
 	if (bind(server_socket, (struct sockaddr *)&server_address, sizeof(server_address)) < 0) {
 		perror("Failed to bind socket file descriptor to defined address.");
 		exit(EXIT_FAILURE);

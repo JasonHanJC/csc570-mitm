@@ -8,7 +8,7 @@ make
 ```
 
 To run the project:
-1. run man-in-the-middle proxy with mode. mode=0: NOMODIFY; mode=1: IGNORE; mode=3: MODIFY
+1. run man-in-the-middle proxy with mode. mode=0: NOMODIFY; mode=1: IGNORE; mode=2: MODIFY
 
 ```bash
 ./mitm-proxy [mode]

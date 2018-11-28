@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 	mitm_address.sin_port = htons(PORT);
 	mitm_address.sin_addr.s_addr = INADDR_ANY;
 	
-	// binf the socket to address
+	// bind the socket to address
 	if (bind(mitm_socket_from_sender, (struct sockaddr *)&mitm_address, sizeof(mitm_address)) < 0) {
 		perror("Failed to bind socket file descriptor to defined address.");
 		exit(EXIT_FAILURE);
@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 		char send_mesg[send_size];
 		if (mode == MODIFY) {
 			send_size = rec_size + 3;
-			// add $$$ in front client message
+			// add +++ in front client message
 			strcpy(send_mesg, "+++");
 			strncat (send_mesg, rec_buffer, rec_size);
 		} else {

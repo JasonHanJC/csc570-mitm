@@ -35,7 +35,7 @@ void deserializeMessage(const char *buffer, struct Message *meg) {
 	meg->header.dest_addr = *(struct sockaddr *)&address;
 }
 
-void printMessage(struct Message *meg) {
+void printMessage(const char *prefix, struct Message *meg) {
 	int dest_port;
 	char addr[INET_ADDRSTRLEN];
 	
@@ -43,7 +43,7 @@ void printMessage(struct Message *meg) {
 	dest_port = ntohs(s->sin_port);
 	inet_ntop(AF_INET, &s->sin_addr, addr, sizeof(addr));
 	
-	printf("Message received { \n\tBody: %s \n\tDestination address: %s:%d\n}\n", meg->body, addr, dest_port);
+	printf("%s { \n\tBody: %s \n\tDestination address: %s:%d\n}\n",prefix, meg->body, addr, dest_port);
 }
 
 

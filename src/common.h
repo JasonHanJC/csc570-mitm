@@ -16,5 +16,5 @@ typedef struct Message
 
 extern void serializeMessage(struct Message *meg, char *buffer, int bufferLen);
 extern void deserializeMessage(const char *buffer, struct Message *meg);
-extern void printMessage(struct Message *meg);
+extern void printMessage(const char *prefix, struct Message *meg);
 #endif

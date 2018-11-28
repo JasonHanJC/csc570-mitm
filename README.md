@@ -3,7 +3,7 @@
 To compile the project, go to the src folder and make the project.
 
 ```bash
-cd source
+cd src
 make
 ```
 

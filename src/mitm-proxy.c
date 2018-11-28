@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
 		// deserialize the destination address
 		struct Message rec_meg;
 		deserializeMessage(rec_buffer, &rec_meg);
-		printMessage(&rec_meg);
+		printMessage("Message received" ,&rec_meg);
 		
 
 		int send_size = rec_size;
@@ -120,7 +120,7 @@ int main(int argc, char *argv[]) {
 				strncat (send_mesg, rec_buffer, rec_size);
 				send(sender_socket, send_mesg, sizeof(send_mesg), 0);
 			} else {
-			send(sender_socket, rec_buffer, sizeof(rec_buffer), 0);
+                send(sender_socket, rec_buffer, sizeof(rec_buffer), 0);
 			}
 
 		}

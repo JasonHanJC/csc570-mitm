@@ -63,14 +63,18 @@ int main(int argc, char *argv[]) {
 			// deserialize the destination address
 			struct Message rec_meg;
 			deserializeMessage(rec_buffer, &rec_meg);
-			printMessage(&rec_meg);
+			printMessage("Message received" ,&rec_meg);
 			
 			int send_size = rec_size;
 			char send_mesg[send_size];
 			send_size = rec_size + 3;
 			// add $$$ in front client message
 			strcpy(send_mesg, "$$$");
-			strncat (send_mesg, rec_buffer, rec_size);
+			strncat(send_mesg, rec_buffer, rec_size);
+            
+            // print send massage
+            deserializeMessage(send_mesg, &rec_meg);
+            printMessage("Message sent" ,&rec_meg);
 						
 			if (send(client_socket, send_mesg, send_size, 0) != send_size) {
 				perror("Failed to send client message"); 

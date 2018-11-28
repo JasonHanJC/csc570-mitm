@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 		char send_mesg[send_size];
 		if (mode == MODIFY) {
 			send_size = rec_size + 3;
-			// add +++ in front client message
+			// add +++ in front of client message
 			strcpy(send_mesg, "+++");
 			strncat (send_mesg, rec_buffer, rec_size);
 		} else {
@@ -112,7 +112,17 @@ int main(int argc, char *argv[]) {
 			}
 			
 			// send back to client
+			if (mode == MODIFY) {
+				rec_size += 3;
+				send_size = rec_size + 3;
+				// add &&& in front of server message
+				strcpy(send_mesg, "&&&");
+				strncat (send_mesg, rec_buffer, rec_size);
+				send(sender_socket, send_mesg, sizeof(send_mesg), 0);
+			} else {
 			send(sender_socket, rec_buffer, sizeof(rec_buffer), 0);
+			}
+
 		}
 		close(mitm_socket_to_dest);
 		close(sender_socket);

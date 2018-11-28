@@ -1,19 +1,16 @@
 CC=g++
 CFLAGS=-Wall
 
-all: server client proxy
-
-common.o:  common.c common.h 
-	$(CC) $(CFLAGS) -c common.c
+all: Server Client MITM
 	
-server: common.o
-	$(CC) $(CFLAGS) server.c common.o -o server
+Server: Server.cpp
+	$(CC) $(CFLAGS) Server.cpp -o Server
 	
-client: common.o
-	$(CC) $(CFLAGS) client.c common.o -o client
+Client: Client.cpp
+	$(CC) $(CFLAGS) Client.cpp -o Client
 	
-proxy: common.o
-	$(CC) $(CFLAGS) mitm-proxy.c common.o -o mitm-proxy
+MITM: MITM.cpp
+	$(CC) $(CFLAGS) MITM.cpp -o MITM
 	
 clean:
-	rm -rf server client mitm-proxy common.o
+	rm -rf Server Client MITM

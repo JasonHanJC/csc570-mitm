@@ -3,7 +3,7 @@
 To compile the project, go to the src folder and make the project.
 
 ```bash
-cd src
+cd source
 make
 ```
 
@@ -20,5 +20,10 @@ To run the project:
 3. run client.
 ```bash
 ./client
+```
+
+To clean the project:
+```bash
+make clean
 ```
 
